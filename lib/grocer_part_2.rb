@@ -4,6 +4,13 @@ def apply_coupons(cart, coupons)
   # Consult README for inputs and outputs
   #
   # REMEMBER: This method **should** update cart
+  coupons.each do |coupon|
+    item_with_coupon = find_item_by_name_in_collection(coupon[:name], cart)
+    if coupon_item and item_with_coupon[:count] >= coupon[:count]
+      cart << { name: "#{item_with_coupon[:name]} W/COUPON", price: coupon[:price] / coupon[:count], item_with_coupon[:clearance], count: coupon[:count]
+
+      }
+
 end
 
 def apply_clearance(cart)
