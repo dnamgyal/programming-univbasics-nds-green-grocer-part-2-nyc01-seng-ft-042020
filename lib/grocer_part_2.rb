@@ -9,7 +9,7 @@ def apply_coupons(cart, coupons)
     if item_with_coupon != nil and item_with_coupon[:count] >= coupon[:count]
       cart << {
         item: "#{item_with_coupon[:name]} W/COUPON",
-        price: coupon[:price] / coupon[:count],
+        price: coupon[:cost] / coupon[:num],
         clearance: item_with_coupon[:clearance],
         count: coupon[:count]
       }
@@ -17,7 +17,6 @@ def apply_coupons(cart, coupons)
     end
   end
   cart
-
 end
 
 def apply_clearance(cart)
