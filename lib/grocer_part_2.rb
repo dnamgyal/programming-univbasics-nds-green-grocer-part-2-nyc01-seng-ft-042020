@@ -1,11 +1,12 @@
 require_relative './part_1_solution.rb'
-
+require "pry"
 def apply_coupons(cart, coupons)
   # Consult README for inputs and outputs
   #
   # REMEMBER: This method **should** update cart
   coupons.each do |coupon|
     item_with_coupon = find_item_by_name_in_collection(coupon[:item], cart)
+
     if item_with_coupon != nil and item_with_coupon[:count] >= coupon[:count]
       cart << {
         item: "#{item_with_coupon[:name]} W/COUPON",
