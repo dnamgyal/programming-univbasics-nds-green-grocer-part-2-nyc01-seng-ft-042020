@@ -1,7 +1,7 @@
 require_relative './part_1_solution.rb'
 
 def apply_coupons(cart, coupons)
-  i = 0
+
   coupons.each do |coupon|
     item_with_coupon = find_item_by_name_in_collection(coupon[:item], cart)
     item_is_in_basket = !!item_with_coupon
@@ -14,7 +14,6 @@ def apply_coupons(cart, coupons)
               }
       item_with_coupon[:count] -= coupon[:num]
     end
-    i += 1
   end
   cart
 end
