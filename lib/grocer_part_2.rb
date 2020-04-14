@@ -1,21 +1,23 @@
 require_relative './part_1_solution.rb'
 
 def apply_coupons(cart, coupons)
-
+  # Consult README for inputs and outputs
+  #
+  # REMEMBER: This method **should** update cart
   coupons.each do |coupon|
-    item_with_coupon = find_item_by_name_in_collection(coupon[:item], cart)
-    item_is_in_basket = !!item_with_coupon
-    count_is_big_enough_to_apply = item_is_in_basket && item_with_coupon[:count] >= coupon[:num]
-    if item_is_in_basket and count_is_big_enough_to_apply
-      cart << { item: "#{item_with_coupon[:item]} W/COUPON",
-                price: coupon[:cost] / coupon[:num],
-                clearance: item_with_coupon[:clearance],
-                count: coupon[:num]
-              }
+    item_with_coupon = find_item_by_name_in_collection(coupon[:name], cart)
+    if item_with_coupon != nil and item_with_coupon[:count] >= coupon[:count]
+      cart << {
+        name: "#{item_with_coupon[:name]} W/COUPON",
+        price: coupon[:price] / coupon[:count],
+        clearance: item_with_coupon[:clearance],
+        count: coupon[:count]
+      }
       item_with_coupon[:count] -= coupon[:num]
     end
   end
   cart
+
 end
 
 def apply_clearance(cart)
